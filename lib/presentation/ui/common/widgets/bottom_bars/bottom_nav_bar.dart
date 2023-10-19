@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../app/app.dart';
+import '../../../../../domain/domain.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../presentation.dart';
 
 class BottomNavBar extends StatelessWidget {
@@ -148,7 +150,8 @@ class _ReplaceScreen extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  context.replaceRoute(HomeRoute(child: const CalendarScreen()));
+                  context
+                      .replaceRoute(HomeRoute(child: const CalendarScreen()));
                 },
                 icon: SvgPicture.asset(
                   AssetNames.calendarIcon,
@@ -170,7 +173,8 @@ class _ReplaceScreen extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  context.replaceRoute(HomeRoute(child: const SettingsScreen()));
+                  context
+                      .replaceRoute(HomeRoute(child: const SettingsScreen()));
                 },
                 icon: SvgPicture.asset(
                   AssetNames.settingsIcon,
@@ -185,21 +189,76 @@ class _ReplaceScreen extends StatelessWidget {
         SizedBox(
           width: theme.spacings.x6,
         ),
-        ClipOval(
-          child: FloatingActionButton(
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return const AddTaskScreen();
-                },
-              );
-            },
-            backgroundColor: theme.palette.buttonPrimary,
-            child: const Icon(Icons.add),
-          ),
-        ),
+        ActionsButton(),
       ],
     );
   }
 }
+
+/*
+MenuAnchor(
+          style: MenuStyle(
+            backgroundColor: MaterialStateProperty.all(
+              Colors.transparent,
+            ),
+            elevation: MaterialStateProperty.all(0),
+          ),
+          menuChildren: HomeMenu.values
+              .map(
+                (e) => Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: theme.spacings.x6,
+                    vertical: theme.spacings.x2,
+                  ),
+                  child: GestureDetector(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          e.toText(
+                            S.of(context),
+                          ),
+                          style: theme.textTheme.bodyLarge!
+                              .copyWith(fontWeight: FontWeight.w700),
+                        ),
+                        SizedBox(
+                          width: theme.spacings.x2,
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(
+                            theme.spacings.x4,
+                          ),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: e.color,
+                          ),
+                          child: SvgPicture.asset(
+                            e.icon,
+                            color: theme.palette.bgSecondary,
+                            width: theme.spacings.x7,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+              .toList(),
+          builder:
+              (BuildContext context, MenuController controller, Widget? child) {
+            return ClipOval(
+              child: FloatingActionButton(
+                onPressed: () {
+                  if (controller.isOpen) {
+                    controller.close();
+                  } else {
+                    controller.open();
+                  }
+                },
+                backgroundColor: theme.palette.bgSecondary,
+                child: const Icon(Icons.add),
+              ),
+            );
+          },
+        ),
+ */

@@ -12,7 +12,7 @@ class DarkThemeBuilder implements ThemeBuilder {
   }) {
     const palette = Palette.dark();
 
-    const fontFamily = 'Ysabeau';
+    const fontFamily = 'Rubik';
 
     final textTheme = _defaultTextTheme.apply(
       bodyColor: palette.textPrimary,
@@ -153,7 +153,7 @@ class DarkThemeBuilder implements ThemeBuilder {
         ),
         backgroundColor: MaterialStateColor.resolveWith(
           (Set<MaterialState> states) {
-            return palette.buttonSecondary;
+            return Colors.transparent;
           },
         ),
         foregroundColor: MaterialStateColor.resolveWith(
@@ -207,66 +207,60 @@ class DarkThemeBuilder implements ThemeBuilder {
   }
 
   TextTheme get _defaultTextTheme => const TextTheme(
-        displayLarge: TextStyle(),
-        displayMedium: TextStyle(),
-        displaySmall: TextStyle(),
-        headlineLarge: TextStyle(),
-        headlineMedium: TextStyle(),
-        headlineSmall: TextStyle(),
-        titleLarge: TextStyle(
-          fontFamily: 'BrunoAceSC',
-          fontSize: 35,
-          height: 28 / 20,
-          fontWeight: FontWeight.w800,
-        ),
-        titleMedium: TextStyle(
-          fontFamily: 'BrunoAceSC',
-          fontSize: 30,
-          height: 24 / 18,
-          fontWeight: FontWeight.w500,
-        ),
-        titleSmall: TextStyle(
-          fontFamily: 'BrunoAceSC',
-          fontSize: 25,
-          height: 20 / 14,
-          fontWeight: FontWeight.w500,
-        ),
-        labelLarge: TextStyle(
-          fontFamily: 'Caveat',
-          fontSize: 20,
-          height: 20 / 14,
-          fontWeight: FontWeight.w500,
-        ),
-        labelMedium: TextStyle(
-          fontFamily: 'Caveat',
-          fontSize: 16,
-          height: 16 / 12,
-          letterSpacing: 0.5,
-          fontWeight: FontWeight.w500,
-        ),
-        labelSmall: TextStyle(
-          fontFamily: 'Caveat',
-          fontSize: 12,
-          height: 16 / 11,
-          letterSpacing: 0,
-          fontWeight: FontWeight.w500,
-        ),
-        bodyLarge: TextStyle(
-          fontSize: 24,
-          height: 24 / 16,
-          fontWeight: FontWeight.w400,
-        ),
-        bodyMedium: TextStyle(
-          fontSize: 20,
-          height: 20 / 14,
-          letterSpacing: 0.25,
-          fontWeight: FontWeight.w400,
-        ),
-        bodySmall: TextStyle(
-          fontSize: 16,
-          height: 16 / 12,
-          letterSpacing: 0.4,
-          fontWeight: FontWeight.w400,
-        ),
-      );
+    displayLarge: TextStyle(),
+    displayMedium: TextStyle(),
+    displaySmall: TextStyle(),
+    headlineLarge: TextStyle(),
+    headlineMedium: TextStyle(),
+    headlineSmall: TextStyle(),
+    titleLarge: TextStyle(
+      fontSize: 20,
+      height: 28 / 20,
+      fontWeight: FontWeight.w500,
+    ),
+    titleMedium: TextStyle(
+      fontSize: 18,
+      height: 24 / 18,
+      fontWeight: FontWeight.w500,
+    ),
+    titleSmall: TextStyle(
+      fontSize: 14,
+      height: 20 / 14,
+      fontWeight: FontWeight.w500,
+    ),
+    labelLarge: TextStyle(
+      fontSize: 14,
+      height: 20 / 14,
+      fontWeight: FontWeight.w500,
+    ),
+    labelMedium: TextStyle(
+      fontSize: 12,
+      height: 16 / 12,
+      letterSpacing: 0.5,
+      fontWeight: FontWeight.w500,
+    ),
+    labelSmall: TextStyle(
+      fontSize: 11,
+      height: 16 / 11,
+      letterSpacing: 0,
+      fontWeight: FontWeight.w500,
+    ),
+    bodyLarge: TextStyle(
+      fontSize: 16,
+      height: 24 / 16,
+      fontWeight: FontWeight.w400,
+    ),
+    bodyMedium: TextStyle(
+      fontSize: 14,
+      height: 20 / 14,
+      letterSpacing: 0.25,
+      fontWeight: FontWeight.w400,
+    ),
+    bodySmall: TextStyle(
+      fontSize: 12,
+      height: 16 / 12,
+      letterSpacing: 0.4,
+      fontWeight: FontWeight.w400,
+    ),
+  );
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../../app/app.dart';
+
+import '../../../../../app/app.dart';
 
 class ObscurePasswordButton extends StatelessWidget {
   const ObscurePasswordButton({

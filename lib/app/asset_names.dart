@@ -18,4 +18,10 @@ class AssetNames {
   static const lockIcon = '$_iconFolder/lock_icon.svg';
 
   static const saveIcon = '$_iconFolder/save_icon.svg';
+
+  static const calendarEvent = '$_iconFolder/calendar_event.svg';
+
+  static const cupIcon = '$_iconFolder/cup_icon.svg';
+
+  static const todoIcon = '$_iconFolder/todo_icon.svg';
 }

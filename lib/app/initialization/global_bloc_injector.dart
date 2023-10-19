@@ -22,9 +22,9 @@ class GlobalBlocInjector extends StatelessWidget {
         BlocProvider(
           create: (context) => GetIt.instance<TaskerBloc>(),
         ),
-        // BlocProvider(
-        //   create: (context) => GetIt.instance<UserProfileBloc>(),
-        // ),
+        BlocProvider(
+          create: (context) => GetIt.instance<MenuActionsBloc>(),
+        ),
       ],
       child: child,
     );

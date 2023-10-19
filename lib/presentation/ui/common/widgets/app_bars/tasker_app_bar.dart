@@ -40,7 +40,7 @@ class _TaskerAppBarState extends State<TaskerAppBar> {
     return SliverAppBar(
       title: Text(
         _monthFormat.format(_focusedDay),
-        style: theme.textTheme.titleSmall!.copyWith(
+        style: theme.textTheme.titleLarge!.copyWith(
           color: theme.palette.textPrimary,
         ),
       ),
@@ -52,6 +52,65 @@ class _TaskerAppBarState extends State<TaskerAppBar> {
         preferredSize: Size.fromHeight(theme.spacings.x19),
         child: TableCalendar(
           calendarBuilders: CalendarBuilders(
+            dowBuilder: (context, day) {
+              return Container(
+                padding: EdgeInsets.only(top: theme.spacings.x2),
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(
+                  horizontal: theme.spacings.x2,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: theme.radiuses.x4,
+                    topRight: theme.radiuses.x4,
+                  ),
+                  color: _selectedDate.year == day.year &&
+                          _selectedDate.month == day.month &&
+                          _selectedDate.day == day.day
+                      ? theme.palette.iconTertiary
+                      : null,
+                ),
+                child: Text(
+                  DateFormat(
+                    'EEE',
+                    Localizations.localeOf(context).languageCode,
+                  ).format(day),
+                  style: _selectedDate.year == day.year &&
+                          _selectedDate.month == day.month &&
+                          _selectedDate.day == day.day
+                      ? theme.textTheme.bodyMedium!.copyWith(
+                          color: theme.palette.textPrimary,
+                        )
+                      : theme.textTheme.bodyMedium!,
+                  textAlign: TextAlign.center,
+                ),
+              );
+            },
+            selectedBuilder: (context, date1, date2) {
+              return Container(
+                width: double.infinity,
+                padding: EdgeInsets.zero,
+                margin: EdgeInsets.symmetric(
+                  horizontal: theme.spacings.x2,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: theme.radiuses.x4,
+                    bottomRight: theme.radiuses.x4,
+                  ),
+                  color: theme.palette.iconTertiary,
+                ),
+                child: Center(
+                  child: Text(
+                    '${date1.day}',
+                    style: theme.textTheme.bodyLarge!.copyWith(
+                      color: theme.palette.textPrimary,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              );
+            },
             markerBuilder: (
               context,
               date,
@@ -75,7 +134,7 @@ class _TaskerAppBarState extends State<TaskerAppBar> {
                     ),
                     child: Text(
                       '${events.length}',
-                      style: theme.textTheme.bodySmall!.copyWith(fontSize: 10),
+                      style: theme.textTheme.bodyMedium!.copyWith(fontSize: 10),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -104,27 +163,26 @@ class _TaskerAppBarState extends State<TaskerAppBar> {
           startingDayOfWeek: StartingDayOfWeek.monday,
           headerVisible: false,
           firstDay: DateTime.utc(2023, 01, 01),
-          lastDay: DateTime.utc(2030, 3, 14),
+          lastDay: DateTime.now().add(
+            const Duration(
+              days: 365,
+            ),
+          ),
           focusedDay: _focusedDay,
           daysOfWeekHeight: theme.spacings.x6,
           calendarFormat: CalendarFormat.week,
           calendarStyle: CalendarStyle(
             todayDecoration: const BoxDecoration(
               color: Colors.transparent,
-              shape: BoxShape.circle,
             ),
-            todayTextStyle: theme.textTheme.bodySmall!.copyWith(
-              color: theme.palette.buttonShare.withOpacity(0.7),
+            todayTextStyle: theme.textTheme.bodyLarge!.copyWith(
+              color: theme.palette.buttonAccent,
             ),
-            selectedTextStyle: theme.textTheme.bodySmall!.copyWith(
-              color: Colors.white,
-            ),
-            //isTodayHighlighted: false,
-            defaultTextStyle: theme.textTheme.bodySmall!,
-            weekendTextStyle: theme.textTheme.bodySmall!.copyWith(
+            defaultTextStyle: theme.textTheme.bodyLarge!,
+            weekendTextStyle: theme.textTheme.bodyLarge!.copyWith(
               color: theme.palette.iconSecondary,
             ),
-            weekNumberTextStyle: theme.textTheme.bodySmall!,
+            weekNumberTextStyle: theme.textTheme.bodyLarge!,
           ),
         ),
       ),
@@ -135,12 +193,13 @@ class _TaskerAppBarState extends State<TaskerAppBar> {
     final currentEvents = _eventsBox.values.where(
       (event) =>
           ((event.dateFirst?.day == eventDay.day &&
-              event.dateFirst?.month == eventDay.month &&
-              event.dateFirst?.year == eventDay.year) ||
-          (event.dateFirst == null &&
-              (DateTime.now().day == eventDay.day &&
-                  DateTime.now().month == eventDay.month &&
-                  DateTime.now().year == eventDay.year))) && !event.finish,
+                  event.dateFirst?.month == eventDay.month &&
+                  event.dateFirst?.year == eventDay.year) ||
+              (event.dateFirst == null &&
+                  (DateTime.now().day == eventDay.day &&
+                      DateTime.now().month == eventDay.month &&
+                      DateTime.now().year == eventDay.year))) &&
+          !event.finish,
     );
     return currentEvents.toList();
   }

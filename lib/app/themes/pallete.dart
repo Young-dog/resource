@@ -11,13 +11,13 @@ class Palette extends ThemeExtension<Palette> {
     required this.borderPrimary,
     required this.borderSecondary,
     required this.textTertiary,
-    required this.buttonSecondary,
     required this.iconSecondary,
     required this.bottomBarElevation,
     required this.buttonAccent,
     required this.buttonShare,
     required this.buttonCheck,
     required this.buttonTertiary,
+    required this.iconTertiary,
   });
 
   const Palette.dark()
@@ -27,7 +27,6 @@ class Palette extends ThemeExtension<Palette> {
           bgSecondary: const Color(0xFFFFFFFF),
           // Button
           buttonPrimary: const Color(0xFFffffff),
-          buttonSecondary: const Color(0xff0000ffff),
           buttonAccent: const Color(0xFFd00000),
           buttonShare: const Color(0xFF0077b6),
           buttonCheck: const Color(0xFF008000),
@@ -39,6 +38,7 @@ class Palette extends ThemeExtension<Palette> {
           //Icon
           iconPrimary: const Color(0xFFffffff),
           iconSecondary: const Color(0xFF6c757d),
+          iconTertiary: const Color(0xFF2D4354),
           //Border
           borderPrimary: const Color(0xFFffffff),
           borderSecondary: const Color(0xFF6c757d),
@@ -46,31 +46,31 @@ class Palette extends ThemeExtension<Palette> {
           bottomBarElevation: const Color(0xFF0a0908),
         );
 
-  const Palette.light()
-      : this(
-          // Background
-          bgPrimary: const Color(0xFF131515),
-          bgSecondary: const Color(0xFFFFFFFF),
-          // Button
-          buttonPrimary: const Color(0xFFffffff),
-          buttonSecondary: const Color(0xff0000ffff),
-          buttonAccent: const Color(0xFFd00000),
-          buttonShare: const Color(0xFF0077b6),
-          buttonCheck: const Color(0xFF008000),
-          buttonTertiary: const Color(0xFF6c757d),
-          //Text
-          textPrimary: const Color(0xFFffffff),
-          textSecondary: const Color(0xFF000000),
-          textTertiary: const Color(0xFF6c757d),
-          //Icon
-          iconPrimary: const Color(0xFFffffff),
-          iconSecondary: const Color(0xFF6c757d),
-          //Border
-          borderPrimary: const Color(0xFFffffff),
-          borderSecondary: const Color(0xFF6c757d),
-          //Elevation
-          bottomBarElevation: const Color(0xFF0a0908),
-        );
+  // const Palette.light()
+  //     : this(
+  //         // Text
+  //         textPrimary: const Color(0xFF343A40),
+  //         textSecondary: const Color(0xFF707C8C),
+  //         textTertiary: const Color(0xFFA0A9B2),
+  //         // Icon
+  //         iconPrimary: const Color(0xFF343A40),
+  //         iconSecondary: const Color(0xFF707C8C),
+  //         // Background
+  //         bgPrimary: const Color(0xFFF4F4F4),
+  //         bgSecondary: const Color(0xFFF2F3F7),
+  //         // Button
+  //         buttonPrimary: const Color(0xFFDE0A26),
+  //         buttonTertiary: const Color(0xFF343A40),
+  //
+  //         buttonAccent: const Color(0xFFd00000),
+  //         buttonShare: const Color(0xFF0077b6),
+  //         buttonCheck: const Color(0xFF008000),
+  //         //Border
+  //         borderPrimary: const Color(0xFFffffff),
+  //         borderSecondary: const Color(0xFF6c757d),
+  //         //Elevation
+  //         bottomBarElevation: const Color(0xFF0a0908),
+  //       );
 
   // Background
   final Color bgPrimary;
@@ -78,7 +78,6 @@ class Palette extends ThemeExtension<Palette> {
 
   // Button
   final Color buttonPrimary;
-  final Color buttonSecondary;
   final Color buttonTertiary;
   final Color buttonAccent;
   final Color buttonShare;
@@ -92,6 +91,7 @@ class Palette extends ThemeExtension<Palette> {
   //Icon
   final Color iconPrimary;
   final Color iconSecondary;
+  final Color iconTertiary;
 
   //Border
   final Color borderPrimary;
@@ -110,8 +110,8 @@ class Palette extends ThemeExtension<Palette> {
     Color? borderPrimary,
     Color? borderSecondary,
     Color? textTertiary,
-    Color? buttonSecondary,
     Color? iconSecondary,
+    Color? iconTertiary,
     Color? bottomBarElevation,
     Color? buttonAccent,
     Color? bgSecondary,
@@ -125,7 +125,6 @@ class Palette extends ThemeExtension<Palette> {
       bgSecondary: bgSecondary ?? this.bgSecondary,
       // Button
       buttonPrimary: buttonPrimary ?? this.buttonPrimary,
-      buttonSecondary: buttonSecondary ?? this.buttonSecondary,
       buttonAccent: buttonAccent ?? this.buttonAccent,
       buttonShare: buttonShare ?? this.buttonShare,
       buttonCheck: buttonCheck ?? this.buttonCheck,
@@ -137,6 +136,7 @@ class Palette extends ThemeExtension<Palette> {
       //Icon
       iconPrimary: iconPrimary ?? this.iconPrimary,
       iconSecondary: iconSecondary ?? this.iconSecondary,
+      iconTertiary: iconTertiary ?? this.iconTertiary,
       //Border
       borderPrimary: borderPrimary ?? this.borderPrimary,
       borderSecondary: borderSecondary ?? this.borderSecondary,
@@ -157,7 +157,6 @@ class Palette extends ThemeExtension<Palette> {
       bgSecondary: Color.lerp(bgSecondary, other.bgSecondary, t)!,
       // Button
       buttonPrimary: Color.lerp(buttonPrimary, other.buttonPrimary, t)!,
-      buttonSecondary: Color.lerp(buttonSecondary, other.buttonSecondary, t)!,
       buttonAccent: Color.lerp(buttonAccent, other.buttonAccent, t)!,
       buttonShare: Color.lerp(buttonShare, other.buttonShare, t)!,
       buttonCheck: Color.lerp(buttonCheck, other.buttonCheck, t)!,
@@ -169,6 +168,7 @@ class Palette extends ThemeExtension<Palette> {
       //Icon
       iconPrimary: Color.lerp(iconPrimary, other.iconPrimary, t)!,
       iconSecondary: Color.lerp(iconSecondary, other.iconSecondary, t)!,
+      iconTertiary: Color.lerp(iconTertiary, other.iconTertiary, t)!,
       //Border
       borderPrimary: Color.lerp(borderPrimary, other.borderPrimary, t)!,
       borderSecondary: Color.lerp(borderSecondary, other.borderSecondary, t)!,

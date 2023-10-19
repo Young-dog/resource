@@ -13,7 +13,7 @@ class NotificationService {
   final BehaviorSubject<String> behaviorSubject = BehaviorSubject();
 
   Future<void> initialize() async {
-    const androidInitialize = AndroidInitializationSettings('ic_resource');
+    const androidInitialize = AndroidInitializationSettings('@mipmap/ic_launcher');
 
     tz.initializeTimeZones();
     tz.setLocalLocation(

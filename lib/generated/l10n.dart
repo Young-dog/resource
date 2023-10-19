@@ -429,6 +429,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Событие`
+  String get event {
+    return Intl.message(
+      'Событие',
+      name: 'event',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Задача`
+  String get task {
+    return Intl.message(
+      'Задача',
+      name: 'task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Цель`
+  String get goal {
+    return Intl.message(
+      'Цель',
+      name: 'goal',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

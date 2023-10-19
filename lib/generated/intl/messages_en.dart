@@ -38,7 +38,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailLabel": MessageLookupByLibrary.simpleMessage("E-mail"),
         "emailVerifyDescription": MessageLookupByLibrary.simpleMessage(
             "На указанный e-mail была отправлена ссылка для подтверждения адреса электронной почты. Перейдите по ней и подтвердите ваши учетные данные"),
+        "event": MessageLookupByLibrary.simpleMessage("Событие"),
         "goBackButtonTitle": MessageLookupByLibrary.simpleMessage("Go back"),
+        "goal": MessageLookupByLibrary.simpleMessage("Цель"),
         "important": MessageLookupByLibrary.simpleMessage("Важная"),
         "incorrectDataError": MessageLookupByLibrary.simpleMessage(
             "Некорректный email и/или имя пользователя"),
@@ -73,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Подзадача..."),
         "successSubmitResetTitle": MessageLookupByLibrary.simpleMessage(
             "На указанный e-mail была отправлена ссылка для  восстановления. Перейдите по ней и придумайте новый пароль"),
+        "task": MessageLookupByLibrary.simpleMessage("Задача"),
         "taskTitleInput":
             MessageLookupByLibrary.simpleMessage("Название задачи..."),
         "timeButtonTitle": MessageLookupByLibrary.simpleMessage("Время +"),

@@ -12,5 +12,5 @@ Future<void> initializeHive() async {
     ..registerAdapter(UserProfileAdapter())
     ..registerAdapter(LevelImportanceAdapter());
 
-  // await Hive.deleteBoxFromDisk(HiveBoxes.tasksBox);
+  //await Hive.deleteBoxFromDisk(HiveBoxes.tasksBox);
 }

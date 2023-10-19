@@ -43,7 +43,8 @@ Future<void> _registerServices() async {
     )
     ..registerLazySingleton<ImagePicker>(
       ImagePicker.new,
-    )..registerLazySingleton<FileManager>(() => FileManager(dio: _getIt()));
+    )
+    ..registerLazySingleton<FileManager>(() => FileManager(dio: _getIt()));
 }
 
 Future<void> _registerDataSource() async {
@@ -52,7 +53,8 @@ Future<void> _registerDataSource() async {
       () => RemoteAuthDataSourceImpl(
         firebaseAuth: _getIt<FirebaseAuth>(),
         firebaseFirestore: _getIt<FirebaseFirestore>(),
-        localCategoryDataSource: _getIt(), fileManager: _getIt(),
+        localCategoryDataSource: _getIt(),
+        fileManager: _getIt(),
       ),
     )
     ..registerSingletonAsync<LocaleCategoryDataSource>(
@@ -67,7 +69,8 @@ Future<void> _registerDataSource() async {
     ..registerSingletonAsync<RemoteUserProfileDataSource>(
       () async => RemoteUserProfileDataSourceImpl(
         firestore: _getIt(),
-        fireStorage: _getIt(), fileManager: _getIt(),
+        fireStorage: _getIt(),
+        fileManager: _getIt(),
       ),
     );
 }
@@ -121,5 +124,8 @@ Future<void> _registerBlocs() async {
       () => UserProfileBloc(
         userProfileRepositories: _getIt(),
       ),
+    )
+    ..registerFactory(
+      MenuActionsBloc.new,
     );
 }

@@ -93,52 +93,66 @@ class RemoteAuthDataSourceImpl implements RemoteAuthDataSource {
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
-
-      final userCredential = await _auth.signInWithCredential(credential);
-
-      final additionalUserInfo = userCredential.additionalUserInfo;
-
-      final isNewUser = additionalUserInfo!.isNewUser;
-
-      if (isNewUser) {
-        await _fireStore
-            .collection(FirebaseNames.users)
-            .doc(userCredential.user!.uid)
-            .set(
-          UserProfile(
-            uid: userCredential.user!.uid,
-            username: userCredential.user!.displayName,
-            email: userCredential.user!.email,
-            avatarUri: '',
-          ).toJson(),
-        );
+      try {
+        await _auth.signInWithCredential(credential);
+      } catch (e) {
+        print(e);
       }
 
-      if (isNewUser) {
-        await _categoryDataSource.addStartCategory();
-      }
 
-      final response = await _fireStore
-          .collection(FirebaseNames.users)
-          .doc(userCredential.user!.uid)
-          .get();
-
-      final jsonData = response.data();
-
-      if (jsonData == null) {
-        throw Exception();
-      }
-
-      final userProfile =
-      UserProfile.fromJson(jsonData);
-
-      if (userProfile.avatarUri?.isNotEmpty ?? false) {
-        imagePath = await _fileManager.download(url: userProfile.avatarUri!, name: userProfile.uid!);
-      }
-
-      return userProfile.copyWith(avatarUri: imagePath ?? '');
+      //print(userCredential);
     }
-    return null;
+    //   print('4');
+    //
+    //   final additionalUserInfo = userCredential.additionalUserInfo;
+    //
+    //   final isNewUser = additionalUserInfo!.isNewUser;
+    //
+    //   if (isNewUser) {
+    //     await _fireStore
+    //         .collection(FirebaseNames.users)
+    //         .doc(userCredential.user!.uid)
+    //         .set(
+    //       UserProfile(
+    //         uid: userCredential.user!.uid,
+    //         username: userCredential.user!.displayName,
+    //         email: userCredential.user!.email,
+    //         avatarUri: '',
+    //       ).toJson(),
+    //     );
+    //   }
+    //
+    //   if (isNewUser) {
+    //     await _categoryDataSource.addStartCategory();
+    //   }
+    //
+    //   print('5');
+    //
+    //   final response = await _fireStore
+    //       .collection(FirebaseNames.users)
+    //       .doc(userCredential.user!.uid)
+    //       .get();
+    //
+    //   print('6');
+    //
+    //   final jsonData = response.data();
+    //
+    //   if (jsonData == null) {
+    //     throw Exception();
+    //   }
+    //
+    //   final userProfile =
+    //   UserProfile.fromJson(jsonData);
+    //
+    //   if (userProfile.avatarUri?.isNotEmpty ?? false) {
+    //     imagePath = await _fileManager.download(url: userProfile.avatarUri!, name: userProfile.uid!);
+    //   }
+    //
+    //   print('7');
+    //
+    //   return userProfile.copyWith(avatarUri: imagePath ?? '');
+    // }
+    return UserProfile.empty();
   }
 
   @override
@@ -159,7 +173,8 @@ class RemoteAuthDataSourceImpl implements RemoteAuthDataSource {
         UserProfile.fromJson(response.data() as Map<String, dynamic>);
 
     if (userProfile.avatarUri?.isNotEmpty ?? false) {
-      imagePath = await _fileManager.download(url: userProfile.avatarUri!, name: userProfile.uid!);
+      imagePath = await _fileManager.download(
+          url: userProfile.avatarUri!, name: userProfile.uid!);
     }
 
     return userProfile.copyWith(avatarUri: imagePath ?? '');

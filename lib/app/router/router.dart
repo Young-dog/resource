@@ -13,24 +13,24 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: HomeRoute.page,
           initial: true,
-          guards: [
-            AuthGuard(),
-          ],
+          // guards: [
+          //   AuthGuard(),
+          // ],
           children: [
             AutoRoute(
-              guards: [AuthGuard()],
+              //guards: [AuthGuard()],
               page: TaskerRoute.page,
             ),
             AutoRoute(
-              guards: [AuthGuard()],
+              //guards: [AuthGuard()],
               page: CalendarRoute.page,
             ),
             AutoRoute(
-              guards: [AuthGuard()],
+              //guards: [AuthGuard()],
               page: ChatsRoute.page,
             ),
             AutoRoute(
-              guards: [AuthGuard()],
+              //guards: [AuthGuard()],
               page: SettingsRoute.page,
             ),
           ],
@@ -51,11 +51,11 @@ class AppRouter extends _$AppRouter {
           page: ReVerificationRoute.page,
         ),
         AutoRoute(
-          guards: [AuthGuard()],
+          //guards: [AuthGuard()],
           page: TaskRoute.page,
         ),
         AutoRoute(
-          guards: [AuthGuard()],
+          //guards: [AuthGuard()],
           page: EditProfileRoute.page,
         ),
       ];

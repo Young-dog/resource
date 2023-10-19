@@ -36,5 +36,8 @@
   "timeButtonTitle": "Время +",
   "saveButtonTitle": "Сохранить",
   "deleteButtonTitle": "Удалить",
-  "addButtonTitle": "Добавить"
+  "addButtonTitle": "Добавить",
+  "event": "Событие",
+  "task": "Задача",
+  "goal": "Цель"
 }
